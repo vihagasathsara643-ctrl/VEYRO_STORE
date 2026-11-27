@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VEYRO — Tech • Beauty • Lifestyle</title>
+  <style>
+    :root {
+      --bg: #050506;
+      --panel: #0c0c0e;
+      --panel-2: #121215;
+      --ink: #f5f5f7;
+      --muted: #9b9ba3;
+      --line: rgba(255, 255, 255, 0.12);
+      --silver: #d8dbe2;
+      --silver-strong: #ffffff;
+      --radius: 16px;
+      --max: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 50% -10%, rgba(216, 219, 226, 0.14), transparent 55%),
+        var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+      color: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Top Announcement */
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: rgba(12, 12, 14, 0.9);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--silver);
+    }
+
+    .topbar-inner {
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6px 12px;
+    }
+
+    /* Header & Nav */
+    header.nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(14px);
+      background: rgba(5, 5, 6, 0.82);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: linear-gradient(135deg, #ffffff 0%, #8a8e99 55%, #232429 100%);
+      display: grid;
+      place-items: center;
+      color: #050506;
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    nav.menu {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    nav.menu a:hover {
+      color: var(--silver-strong);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--ink);
+      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn:hover {
+      border-color: rgba(255, 255, 255, 0.32);
+      background: var(--panel-2);
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-silver {
+      background: linear-gradient(135deg, #ffffff 0%, #cfd3dc 100%);
+      color: #050506;
+      border-color: transparent;
+    }
+
+    .btn-silver:hover {
+      background: #ffffff;
+      border-color: transparent;
+    }
+
+    .badge {
+      background: #050506;
+      color: #ffffff;
+      border-radius: 999px;
+      padding: 2px 7px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 72px 0 56px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--silver);
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 54ch;
+      margin-bottom: 24px;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-card {
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.01));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .hero-card .spec {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    .hero-card .spec:last-child {
+      border-bottom: none;
+    }
+
+    .hero-card .spec span:first-child {
+      color: var(--muted);
+    }
+
+    /* Sections */
+    section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .section-head h2 {
+      font-size: 26px;
+      letter-spacing: -0.015em;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Categories */
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .cat-card {
+      text-align: left;
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--panel);
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+
+    .cat-card:hover,
+    .cat-card.active {
+      border-color: var(--silver);
+      background: var(--panel-2);
+    }
+
+    .cat-card strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .cat-card small {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* Tools */
+    .tools {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .input,
+    .select {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .input {
+      flex: 1 1 240px;
+    }
+
+    .input:focus,
+    .select:focus {
+      border-color: var(--silver);
+    }
+
+    /* Product Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(255, 255, 255, 0.28);
+      transform: translateY(-2px);
+    }
+
+    .thumb {
+      height: 170px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #16171b 0%, #0b0b0d 100%);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--silver);
+      overflow: hidden;
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .card h3 {
+      font-size: 17px;
+      margin: 4px 0 6px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .card-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-top: 8px;
+      border-top: 1px solid var(--line);
+    }
+
+    .price {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--silver-strong);
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    /* Product Detail View */
+    .detail-box {
+      display: none;
+      margin-top: 28px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .detail-box.open {
+      display: block;
+    }
+
+    .detail-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .page-btn {
+      min-width: 36px;
+      height: 36px;
+      padding: 0 10px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      font-size: 13px;
+    }
+
+    .page-btn.active {
+      background: var(--silver-strong);
+      color: #050506;
+      font-weight: 700;
+    }
+
+    /* About & Footer */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .about-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+
+    .about-card h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .about-card p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 36px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* Modals */
+    .modalback {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modalback.open {
+      display: flex;
+    }
+
+    .modal {
+      width: 100%;
+      max-width: 580px;
+      max-height: 88vh;
+      overflow-y: auto;
+      background: var(--panel);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    .qty-ctrl {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .qty-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: var(--panel-2);
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .admin-list-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .detail-layout,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .categories {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav.menu {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        padding: 16px 20px;
+        gap: 14px;
+      }
+
+      nav.menu.open {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .grid,
+      .categories {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      Complimentary Express Delivery on Orders Over $120 • VEYRO Silver Edition
+    </div>
+  </div>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand-lockup">
+        <span class="brand-mark">V</span>
+        <span>VEYRO</span>
+      </div>
+
+      <nav class="menu" id="siteMenu">
+        <a href="#categories">Categories</a>
+        <a href="#catalog">Catalog</a>
+        <a href="#about">About</a>
+        <button type="button" id="openAdminBtn">Admin</button>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="btn btn-silver" id="openCartBtn">
+          Cart <span class="badge" id="cartCount">0</span>
+        </button>
+        <button type="button" class="menu-toggle" id="menuBtn" aria-label="Toggle Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Tech • Beauty • Lifestyle</span>
+          <h1>Minimalist precision built for everyday rituals.</h1>
+          <p>
+            Curated hardware, clinical-grade beauty instruments, and architectural objects finished in brushed silver and obsidian.
+          </p>
+          <div class="hero-cta">
+            <a href="#catalog" class="btn btn-silver">Explore Catalog</a>
+            <button type="button" class="btn" id="heroFeaturedBtn">Featured Drop</button>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="spec">
+            <span>Material Standard</span>
+            <strong>Anodized Aluminum &amp; Glass</strong>
+          </div>
+          <div class="spec">
+            <span>Warranty Coverage</span>
+            <strong>2-Year VEYRO Care</strong>
+          </div>
+          <div class="spec">
+            <span>Dispatch Window</span>
+            <strong>Within 24 Hours</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="categories">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Shop by Category</h2>
+            <p>Filter the storefront by collection</p>
+          </div>
+        </div>
+
+        <div class="categories" id="categoryList">
+          <button type="button" class="cat-card active" data-cat="All">
+            <strong>All Collections</strong>
+            <small>Every VEYRO release</small>
+          </button>
+          <button type="button" class="cat-card" data-cat="Tech">
+            <strong>Tech</strong>
+            <small>Audio, power &amp; desk gear</small>
+          </button>
+          <button type="button" class="cat-card" data-cat="Beauty">
+            <strong>Beauty</strong>
+            <small>Light therapy &amp; skin tools</small>
+          </button>
+          <button type="button" class="cat-card" data-cat="Lifestyle">
+            <strong>Lifestyle</strong>
+            <small>Scent, objects &amp; travel</small>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalog">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Catalog</h2>
+            <p id="resultSummary">Showing products</p>
+          </div>
+        </div>
+
+        <div class="tools">
+          <input type="search" id="searchInput" class="input" placeholder="Search products, materials, or categories..." />
+          <select id="sortSelect" class="select">
+            <option value="featured">Sort: Featured</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="name-asc">Name: A to Z</option>
+          </select>
+        </div>
+
+        <div class="grid" id="productGrid"></div>
+        <div class="pagination" id="pagination"></div>
+
+        <div class="detail-box" id="detailBox"></div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Why VEYRO</h2>
+            <p>Designed around longevity, restraint, and tactile clarity</p>
+          </div>
+        </div>
+        <div class="about-grid">
+          <div class="about-card">
+            <h3>Tactile Restraint</h3>
+            <p>Clean geometry and balanced weight distribution without visual clutter or loud branding.</p>
+          </div>
+          <div class="about-card">
+            <h3>Tested Performance</h3>
+            <p>Each piece is selected for daily reliability across workspace, skincare, and living spaces.</p>
+          </div>
+          <div class="about-card">
+            <h3>Direct Catalog Control</h3>
+            <p>Update items, pricing, and inventory live through the built-in admin panel.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="brand-lockup">
+        <span class="brand-mark">V</span>
+        <span>VEYRO</span>
+      </div>
+      <div>© <span id="year"></span> VEYRO. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Cart Modal -->
+  <div class="modalback" id="cartModal" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Your Cart</h3>
+        <button type="button" class="btn" data-close="cartModal">Close</button>
+      </div>
+      <div id="cartItems"></div>
+      <div style="margin-top: 18px; display: flex; justify-content: space-between; align-items: center;">
+        <strong>Subtotal</strong>
+        <strong class="price" id="cartSubtotal">$0.00</strong>
+      </div>
+      <div style="margin-top: 18px; display: flex; justify-content: flex-end; gap: 10px;">
+        <button type="button" class="btn" id="clearCartBtn">Clear</button>
+        <button type="button" class="btn btn-silver" id="checkoutBtn">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Modal -->
+  <div class="modalback" id="adminModal" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Catalog Admin</h3>
+        <button type="button" class="btn" data-close="adminModal">Close</button>
+      </div>
+
+      <form class="form-grid" id="productForm">
+        <input type="hidden" id="editId" />
+        <input type="text" id="prodName" class="input" placeholder="Product Name" required />
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <select id="prodCat" class="select" style="flex: 1;">
+            <option value="Tech">Tech</option>
+            <option value="Beauty">Beauty</option>
+            <option value="Lifestyle">Lifestyle</option>
+          </select>
+          <input type="number" id="prodPrice" class="input" placeholder="Price ($)" step="0.01" min="1" required style="flex: 1;" />
+        </div>
+        <input type="text" id="prodImage" class="input" placeholder="Image URL (optional)" />
+        <textarea id="prodDesc" class="input" rows="2" placeholder="Short description" required></textarea>
+        <div style="display: flex; gap: 10px;">
+          <button type="submit" class="btn btn-silver" id="saveProdBtn">Save Product</button>
+          <button type="button" class="btn" id="resetFormBtn">Reset</button>
+        </div>
+      </form>
+
+      <div style="margin-top: 22px;">
+        <h4 style="margin-bottom: 10px; font-size: 14px; color: var(--silver);">Existing Products</h4>
+        <div id="adminProductList"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_PRODUCTS = "veyro_products_v1";
+    const STORAGE_CART = "veyro_cart_v1";
+
+    const DEFAULT_PRODUCTS = [
+      {
+        id: "p-1",
+        name: "VEYRO Monolith DAC & Amp",
+        category: "Tech",
+        price: 289,
+        description: "CNC-milled silver desktop headphone amplifier with balanced output and rotary volume detents.",
+        image: "",
+        featured: true
+      },
+      {
+        id: "p-2",
+        name: "Lumina Cryo-Silver Wand",
+        category: "Beauty",
+        price: 165,
+        description: "Thermal-retaining stainless and silver contour wand for morning depuffing and recovery.",
+        image: "",
+        featured: true
+      },
+      {
+        id: "p-3",
+        name: "Aero Mag-Charge Dock",
+        category: "Tech",
+        price: 119,
+        description: "Weighted Qi2 magnetic stand with braided cable and subtle silver status ring.",
+        image: "",
+        featured: false
+      },
+      {
+        id: "p-4",
+        name: "Santal & Slate Diffuser",
+        category: "Lifestyle",
+        price: 94,
+        description: "Whisper-quiet ultrasonic vessel paired with smoked cedar, vetiver, and bergamot oil.",
+        image: "",
+        featured: true
+      },
+      {
+        id: "p-5",
+        name: "Photon Micro-Pulse Mask",
+        category: "Beauty",
+        price: 240,
+        description: "Flexible medical-grade silicone facial mask engineered for targeted light sessions.",
+        image: "",
+        featured: false
+      },
+      {
+        id: "p-6",
+        name: "Nomad Weekender Folio",
+        category: "Lifestyle",
+        price: 175,
+        description: "Weather-resistant structured carryall with padded tech sleeve and matte hardware.",
+        image: "",
+        featured: false
+      },
+      {
+        id: "p-7",
+        name: "Pulse Studio Earbuds",
+        category: "Tech",
+        price: 199,
+        description: "Adaptive noise cancellation, low-latency mode, and brushed metallic charging case.",
+        image: "",
+        featured: false
+      }
+    ];
+
+    let products = loadProducts();
+    let cart = loadCart();
+
+    const state = {
+      category: "All",
+      search: "",
+      sort: "featured",
+      page: 1,
+      perPage: 6,
+      selectedProductId: null
+    };
+
+    function loadProducts() {
+      try {
+        const raw = localStorage.getItem(STORAGE_PRODUCTS);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed) && parsed.length) return parsed;
+        }
+      } catch (e) {}
+      localStorage.setItem(STORAGE_PRODUCTS, JSON.stringify(DEFAULT_PRODUCTS));
+      return [...DEFAULT_PRODUCTS];
+    }
+
+    function saveProducts() {
+      localStorage.setItem(STORAGE_PRODUCTS, JSON.stringify(products));
+    }
+
+    function loadCart() {
+      try {
+        const raw = localStorage.getItem(STORAGE_CART);
+        return raw ? JSON.parse(raw) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveCart() {
+      localStorage.setItem(STORAGE_CART, JSON.stringify(cart));
+      updateCartBadge();
+    }
+
+    function formatPrice(val) {
+      return "$" + Number(val || 0).toFixed(2);
+    }
+
+    function escapeHtml(str) {
+      return String(str || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function getFilteredProducts() {
+      let list = [...products];
+
+      if (state.category !== "All") {
+        list = list.filter((p) => p.category === state.category);
+      }
+
+      if (state.search.trim()) {
+        const q = state.search.trim().toLowerCase();
+        list = list.filter(
+          (p) =>
+            p.name.toLowerCase().includes(q) ||
+            p.category.toLowerCase().includes(q) ||
+            p.description.toLowerCase().includes(q)
+        );
+      }
+
+      if (state.sort === "price-asc") {
+        list.sort((a, b) => a.price - b.price);
+      } else if (state.sort === "price-desc") {
+        list.sort((a, b) => b.price - a.price);
+      } else if (state.sort === "name-asc") {
+        list.sort((a, b) => a.name.localeCompare(b.name));
+      } else {
+        list.sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)));
+      }
+
+      return list;
+    }
+
+    function renderCatalog() {
+      const filtered = getFilteredProducts();
+      const totalPages = Math.max(1, Math.ceil(filtered.length / state.perPage));
+      if (state.page > totalPages) state.page = totalPages;
+
+      const start = (state.page - 1) * state.perPage;
+      const pageItems = filtered.slice(start, start + state.perPage);
+
+      const grid = document.getElementById("productGrid");
+      const summary = document.getElementById("resultSummary");
+      summary.textContent = `Showing ${pageItems.length} of ${filtered.length} products (${state.category})`;
+
+      if (!pageItems.length) {
+        grid.innerHTML = `<div class="card" style="grid-column: 1 / -1;"><p>No matching products found.</p></div>`;
+      } else {
+        grid.innerHTML = pageItems
+          .map((p) => {
+            const thumbContent = p.image
+              ? `<img src="${escapeHtml(p.image)}" alt="${escapeHtml(p.name)}" />`
+              : `<span>${escapeHtml(p.category)}</span>`;
+            return `
+              <article class="card">
+                <div>
+                  <div class="thumb">${thumbContent}</div>
+                  <div class="meta-row" style="margin-top: 12px;">
+                    <span>${escapeHtml(p.category)}</span>
+                    ${p.featured ? `<span style="color: var(--silver);">Featured</span>` : `<span>In Stock</span>`}
+                  </div>
+                  <h3>${escapeHtml(p.name)}</h3>
+                  <p>${escapeHtml(p.description)}</p>
+                </div>
+                <div class="card-bottom">
+                  <span class="price">${formatPrice(p.price)}</span>
+                  <div class="card-actions">
+                    <button type="button" class="btn" onclick="openDetail('${p.id}')">Details</button>
+                    <button type="button" class="btn btn-silver" onclick="addToCart('${p.id}')">Add</button>
+                  </div>
+                </div>
+              </article>
+            `;
+          })
+          .join("");
+      }
+
+      renderPagination(totalPages);
+      renderDetail();
+    }
+
+    function renderPagination(totalPages) {
+      const pag = document.getElementById("pagination");
+      if (totalPages <= 1) {
+        pag.innerHTML = "";
+        return;
+      }
+
+      let html = "";
+      for (let i = 1; i <= totalPages; i++) {
+        html += `<button type="button" class="page-btn ${i === state.page ? "active" : ""}" onclick="goToPage(${i})">${i}</button>`;
+      }
+      pag.innerHTML = html;
+    }
+
+    function goToPage(page) {
+      state.page = page;
+      renderCatalog();
+      document.getElementById("catalog").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function openDetail(id) {
+      state.selectedProductId = id;
+      renderDetail();
+      const box = document.getElementById("detailBox");
+      box.classList.add("open");
+      box.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    function closeDetail() {
+      state.selectedProductId = null;
+      document.getElementById("detailBox").classList.remove("open");
+    }
+
+    function renderDetail() {
+      const box = document.getElementById("detailBox");
+      if (!state.selectedProductId) {
+        box.classList.remove("open");
+        box.innerHTML = "";
+        return;
+      }
+
+      const prod = products.find((p) => p.id === state.selectedProductId);
+      if (!prod) {
+        closeDetail();
+        return;
+      }
+
+      const visual = prod.image
+        ? `<img src="${escapeHtml(prod.image)}" alt="${escapeHtml(prod.name)}" style="width:100%;height:260px;object-fit:cover;border-radius:12px;" />`
+        : `<div class="thumb" style="height:260px;"><span>${escapeHtml(prod.category)}</span></div>`;
+
+      box.classList.add("open");
+      box.innerHTML = `
+        <div class="detail-layout">
+          <div>${visual}</div>
+          <div>
+            <span class="eyebrow" style="margin-bottom: 6px;">${escapeHtml(prod.category)}</span>
+            <h3 style="font-size: 24px; margin-bottom: 10px;">${escapeHtml(prod.name)}</h3>
+            <p style="color: var(--muted); margin-bottom: 16px;">${escapeHtml(prod.description)}</p>
+            <div class="price" style="font-size: 22px; margin-bottom: 18px;">${formatPrice(prod.price)}</div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <button type="button" class="btn btn-silver" onclick="addToCart('${prod.id}')">Add to Cart</button>
+              <button type="button" class="btn" onclick="closeDetail()">Close Preview</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function addToCart(productId) {
+      const prod = products.find((p) => p.id === productId);
+      if (!prod) return;
+
+      const existing = cart.find((item) => item.id === productId);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ id: prod.id, name: prod.name, price: prod.price, qty: 1 });
+      }
+      saveCart();
+      renderCart();
+    }
+
+    function changeQty(productId, delta) {
+      const idx = cart.findIndex((item) => item.id === productId);
+      if (idx === -1) return;
+      cart[idx].qty += delta;
+      if (cart[idx].qty <= 0) {
+        cart.splice(idx, 1);
+      }
+      saveCart();
+      renderCart();
+    }
+
+    function updateCartBadge() {
+      const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+      document.getElementById("cartCount").textContent = totalQty;
+    }
+
+    function renderCart() {
+      const container = document.getElementById("cartItems");
+      const subtotalEl = document.getElementById("cartSubtotal");
+
+      if (!cart.length) {
+        container.innerHTML = `<p style="color: var(--muted); padding: 12px 0;">Your cart is currently empty.</p>`;
+        subtotalEl.textContent = "$0.00";
+        return;
+      }
+
+      let subtotal = 0;
+      container.innerHTML = cart
+        .map((item) => {
+          const liveProd = products.find((p) => p.id === item.id);
+          const price = liveProd ? liveProd.price : item.price;
+          const lineTotal = price * item.qty;
+          subtotal += lineTotal;
+          return `
+            <div class="cart-item">
+              <div>
+                <div><strong>${escapeHtml(item.name)}</strong></div>
+                <div style="color: var(--muted); font-size: 12px;">${formatPrice(price)} each</div>
+              </div>
+              <div class="qty-ctrl">
+                <button type="button" class="qty-btn" onclick="changeQty('${item.id}', -1)">-</button>
+                <span>${item.qty}</span>
+                <button type="button" class="qty-btn" onclick="changeQty('${item.id}', 1)">+</button>
+                <span style="min-width: 72px; text-align: right; font-weight: 600;">${formatPrice(lineTotal)}</span>
+              </div>
+            </div>
+          `;
+        })
+        .join("");
+
+      subtotalEl.textContent = formatPrice(subtotal);
+    }
+
+    function openModal(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.add("open");
+      el.setAttribute("aria-hidden", "false");
+      if (id === "cartModal") renderCart();
+      if (id === "adminModal") renderAdminList();
+    }
+
+    function closeModal(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.remove("open");
+      el.setAttribute("aria-hidden", "true");
+    }
+
+    function renderAdminList() {
+      const list = document.getElementById("adminProductList");
+      list.innerHTML = products
+        .map(
+          (p) => `
+            <div class="admin-list-item">
+              <div>
+                <strong>${escapeHtml(p.name)}</strong>
+                <span style="color: var(--muted);"> • ${escapeHtml(p.category)} • ${formatPrice(p.price)}</span>
+              </div>
+              <div style="display: flex; gap: 6px;">
+                <button type="button" class="btn" style="padding: 6px 10px;" onclick="editProduct('${p.id}')">Edit</button>
+                <button type="button" class="btn" style="padding: 6px 10px;" onclick="deleteProduct('${p.id}')">Delete</button>
+              </div>
+            </div>
+          `
+        )
+        .join("");
+    }
+
+    function editProduct(id) {
+      const p = products.find((item) => item.id === id);
+      if (!p) return;
+      document.getElementById("editId").value = p.id;
+      document.getElementById("prodName").value = p.name;
+      document.getElementById("prodCat").value = p.category;
+      document.getElementById("prodPrice").value = p.price;
+      document.getElementById("prodImage").value = p.image || "";
+      document.getElementById("prodDesc").value = p.description;
+      document.getElementById("saveProdBtn").textContent = "Update Product";
+    }
+
+    function deleteProduct(id) {
+      products = products.filter((p) => p.id !== id);
+      saveProducts();
+      renderAdminList();
+      renderCatalog();
+    }
+
+    function resetAdminForm() {
+      document.getElementById("editId").value = "";
+      document.getElementById("productForm").reset();
+      document.getElementById("saveProdBtn").textContent = "Save Product";
+    }
+
+    // Event Listeners
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.getElementById("menuBtn").addEventListener("click", () => {
+      document.getElementById("siteMenu").classList.toggle("open");
+    });
+
+    document.querySelectorAll("#siteMenu a").forEach((link) => {
+      link.addEventListener("click", () => {
+        document.getElementById("siteMenu").classList.remove("open");
+      });
+    });
+
+    document.querySelectorAll(".cat-card").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".cat-card").forEach((c) => c.classList.remove("active"));
+        btn.classList.add("active");
+        state.category = btn.dataset.cat;
+        state.page = 1;
+        renderCatalog();
+      });
+    });
+
+    document.getElementById("searchInput").addEventListener("input", (e) => {
+      state.search = e.target.value;
+      state.page = 1;
+      renderCatalog();
+    });
+
+    document.getElementById("sortSelect").addEventListener("change", (e) => {
+      state.sort = e.target.value;
+      renderCatalog();
+    });
+
+    document.getElementById("heroFeaturedBtn").addEventListener("click", () => {
+      state.category = "All";
+      state.search = "";
+      state.sort = "featured";
+      state.page = 1;
+      document.getElementById("searchInput").value = "";
+      document.getElementById("sortSelect").value = "featured";
+      document.querySelectorAll(".cat-card").forEach((c) => c.classList.toggle("active", c.dataset.cat === "All"));
+      renderCatalog();
+      document.getElementById("catalog").scrollIntoView({ behavior: "smooth" });
+    });
+
+    document.getElementById("openCartBtn").addEventListener("click", () => openModal("cartModal"));
+    document.getElementById("openAdminBtn").addEventListener("click", () => openModal("adminModal"));
+
+    document.querySelectorAll("[data-close]").forEach((btn) => {
+      btn.addEventListener("click", () => closeModal(btn.dataset.close));
+    });
+
+    document.querySelectorAll(".modalback").forEach((back) => {
+      back.addEventListener("click", (e) => {
+        if (e.target === back) closeModal(back.id);
+      });
+    });
+
+    document.getElementById("clearCartBtn").addEventListener("click", () => {
+      cart = [];
+      saveCart();
+      renderCart();
+    });
+
+    document.getElementById("checkoutBtn").addEventListener("click", () => {
+      if (!cart.length) {
+        alert("Your cart is empty.");
+        return;
+      }
+      alert("Order placed! Thank you for shopping with VEYRO.");
+      cart = [];
+      saveCart();
+      renderCart();
+      closeModal("cartModal");
+    });
+
+    document.getElementById("productForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const editId = document.getElementById("editId").value;
+      const name = document.getElementById("prodName").value.trim();
+      const category = document.getElementById("prodCat").value;
+      const price = parseFloat(document.getElementById("prodPrice").value);
+      const image = document.getElementById("prodImage").value.trim();
+      const description = document.getElementById("prodDesc").value.trim();
+
+      if (!name || isNaN(price) || price <= 0 || !description) return;
+
+      if (editId) {
+        products = products.map((p) =>
+          p.id === editId ? { ...p, name, category, price, image, description } : p
+        );
+      } else {
+        products.unshift({
+          id: "p-" + Date.now(),
+          name,
+          category,
+          price,
+          image,
+          description,
+          featured: false
+        });
+      }
+
+      saveProducts();
+      resetAdminForm();
+      renderAdminList();
+      renderCatalog();
+    });
+
+    document.getElementById("resetFormBtn").addEventListener("click", resetAdminForm);
+
+    // Init
+    updateCartBadge();
+    renderCatalog();
+  </script>
+</body>
+</html>
